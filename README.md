@@ -12,6 +12,7 @@ This project seeks to localize nodes in a Wireless Network using only range meas
 
 ## How to use
 
+### Single network simulation
 In order to run a simulation on a single network, one needs to set the following parameters on **main.m** file.
 ````matlab
 %% Properties to set network
@@ -55,6 +56,67 @@ Another important parameter for the convergence of the method must be set on **c
 ````
 
 The result of running the specified network with the parameters given before is shown in the following plots:
+
+
+We utilized a structure to contain all parameters and estimated values for each node in the network as follows:
+````matlab
+%% Node data structure
+node = struct('coord'              , nan(network.n,1),...
+              'rangeRadius'        , nan,...
+              'trueRanges'         , nan(network.m,1),...
+              'meanRanges'         , nan(network.m,network.T),...
+              'neighbors'          , [],...
+              'degree'             , nan,...
+              'neighborGroups'     , [],...
+              'coordAnchors'       , nan(network.n,network.a),...
+              'coordUnknowns'      , nan(network.n,network.u),...
+              'validNeighborGroups', [],...
+              'lambdaMatrix'       , [],...
+              'meanLambdaMatrix'   , [],...
+              'tempCounterFlag'    , 0,...
+              'generalizedLambda'  , nan(network.m,network.T),...
+              'Xut'                , zeros(network.u,network.n,network.T),...
+              'eXut'               , nan(network.T,1),...
+              'gradt'              , nan(network.u,network.n,network.T));
+````
+If one wishes to see:
+* Neighbors of node i, one can call
+````matlab
+node(i).neighbors
+````
+* All possible combinations of neighbors of node i that are utilized
+````matlab
+node(i).neighborGroups
+````
+* All barycentric coordinates of node i are stored sequentially on *lambdaMatrix* following the order given by *neighborGroups*. Pay attention that we store all barycentric coordinates for all iterations.
+````matlab
+node(i).lambdaMatrix
+````
+
+### Batch simulation for RMSE evaluation
+
+In order to run a batch simulation to evaluate RMSE for different random networks one may call **main_batch.m** with the following parameters specified inside the file.
+
+````matlab
+rng(69)    % Random generator seed number. Changes networks without 
+           % changing its parameters bellow.
+
+%% Properties to set network
+in.m = 14;                    % Number of nodes 
+in.n = 3;                     % Number of dimensions
+in.T = 1e4;                   % Number of steps to simulate
+in.boxSize = 10;              % Network is randomly placed in a n-dim 
+                                   % cube of this side length
+in.r = 10;                    % Radius of communication and range
+in.varRangesProportion = 10;  % Variance of range measurements
+````
+````matlab
+%% Number of random networks to simulate
+nNetworkSamples = 20; 
+````
+The output of this function is a plot with all RMSE values over iterations with different colors for each network. An example of running 28 networks is given below:
+
+
 
 ## Credits
 This implementation was coded by myself, Pedro Paulo Ventura Tecchio, while pursuing a Ph.D. degree at University of Pennsylvania. Related paper:
