@@ -55,7 +55,7 @@ Another important parameter for the convergence of the method must be set on **c
     etas = 1e-3;
 ````
 
-The result of running the specified network with the parameters given before is shown in the following plots:
+The result of running the specified network with the parameters given before is shown in the following plots, which are generated automatically by the functions **showNetwork()** and **showPlots()**:
 
 ![Example network specified in the file.](/network_14nodes_example_case_5e4iterations.png)
 ![Difference norm between ground truth and estimation over iterations.](/difference_14nodes_example_case_5e4iterations.png)
