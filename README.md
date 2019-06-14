@@ -57,6 +57,9 @@ Another important parameter for the convergence of the method must be set on **c
 
 The result of running the specified network with the parameters given before is shown in the following plots:
 
+![Example network specified in the file.](/network_14nodes_example_case_5e4iterations.png)
+![Difference norm between ground truth and estimation over iterations.](/difference_14nodes_example_case_5e4iterations.png)
+![Trajectories of the estimated values at node 1.](/trajectories_14nodes_example_case_5e4iterations.png)
 
 We utilized a structure to contain all parameters and estimated values for each node in the network as follows:
 ````matlab
