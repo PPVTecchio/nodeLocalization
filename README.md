@@ -119,7 +119,7 @@ nNetworkSamples = 20;
 ````
 The output of this function is a plot with all RMSE values over iterations with different colors for each network. An example of running 28 networks is given below:
 
-![RMSE simulation of 28 random networks](/first_RMSE_simulated_run_with_28_random_networks_and_same_parameters.eps)
+![RMSE simulation of 28 random networks](/first_RMSE_simulated_run_with_28_random_networks_and_same_parameters.png)
 
 ## Credits
 This implementation was coded by myself, Pedro Paulo Ventura Tecchio, while pursuing a Ph.D. degree at University of Pennsylvania. Related paper:
