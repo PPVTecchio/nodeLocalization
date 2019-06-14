@@ -1,10 +1,10 @@
 # nodeLocalization
-This project seeks to localize nodes in a Wireless Network using only range measurements and a small subset of referece locations.
+This project seeks to localize nodes in a Wireless Network using only range measurements and a small subset of reference locations.
 * Reference nodes are called Anchors and have known locations.
 * We call non-anchor nodes, Unknowns.
 * Nodes lie in **n-dimensional Euclidean space**. While we usually have n = 2 or n = 3 in current applications; our implementation, with exception of plot functions, is able to deal with any possible number of dimensions.
 * We utilize the minimum number of anchors, which is n + 1.
-* **Anchors and Unknows may lie arbitrarily**, i.e. there is no assumption on how the anchors in the network are placed.
+* **Anchors and Unknows may lie arbitrarily**, i.e. there is no assumption on how the anchors are placed in the network.
 
 ## Requirements for utilization
 * A running Matlab environment. Tested with Matlab R2018b - academic use.
@@ -49,7 +49,7 @@ The following code will run the specified network, if one desires to run a compl
                              setNetworkAnchors);
 ````
 
-Another important parameter for the convergence of the method must be set on **computeLocationStep.m**, it is the value of the stepsize utilized on the distributed gradient method. We utilize a fixed and small value as a standard, but we show other possibilities on the commented section of this same file.
+Another important parameter for the convergence of the method must be set on **computeLocationStep.m**, it is the value of the stepsize utilized on the distributed gradient method. We utilize a fixed small value as a standard, but we show other possibilities on the commented section of this file.
 ````matlab
 % For now, we are using fixed step sizes
     etas = 1e-3;
@@ -61,7 +61,7 @@ The result of running the specified network with the parameters given before is 
 ![Difference norm between ground truth and estimation over iterations.](/difference_14nodes_example_case_5e4iterations.png)
 ![Trajectories of the estimated values at node 1.](/trajectories_14nodes_example_case_5e4iterations.png)
 
-We utilized a structure to contain all parameters and estimated values for each node in the network as follows:
+We utilized a structure to contain all variables and estimated values for each node in the network as follows:
 ````matlab
 %% Node data structure
 node = struct('coord'              , nan(network.n,1),...
