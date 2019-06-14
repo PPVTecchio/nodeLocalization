@@ -14,9 +14,9 @@
 %           |LLua LLuu| |Xu| 
 % [Xa' LLaa + Xu' LLua; Xa' LLau + Xu' LLuu] * [Xa;Xu] = 0
 % Xa' LLaa Xa + Xu' LLua Xa + Xa' LLau Xu + Xu' LLuu Xu = 0
-% f(Xu) = Xu' LLuu Xu + Xa' (LLau + LLua') Xu + Xa' LLaa Xa
-% grad  = Xu' LLuu + Xa' (LLau + LLua') + LLuu' Xu
-% hess  = 2 LLuu
+% tr(Xa' LLaa Xa + Xu' LLua Xa + Xa' LLau Xu + Xu' LLuu Xu) = tr(0)
+% f(Xu) = tr(Xu' LLuu Xu + Xa' (LLau + LLua') Xu + Xa' LLaa Xa)
+% grad  = (LLuu + LLuu') Xu + 2 LLua Xa; LLau = LLua'
 
 function node = computeLocationStep(node,network)
 for t = 2:network.T
