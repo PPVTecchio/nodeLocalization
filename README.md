@@ -12,6 +12,49 @@ This project seeks to localize nodes in a Wireless Network using only range meas
 
 ## How to use
 
+In order to run a simulation on a single network, one needs to set the following parameters on **main.m** file.
+````matlab
+%% Properties to set network
+rng(69)    % Random generator seed number. Changes networks without 
+           % changing its parameters bellow.
+
+network.m = 14;                    % Number of nodes 
+network.n = 3;                     % Number of dimensions
+network.a = network.n + 1;         % Minimal number of anchors
+network.u = network.m - network.a; % Maximum number of unknowns
+network.T = 5e4;                   % Number of steps to simulate
+network.boxSize = 10;              % Network is randomly placed in a n-dim 
+                                   % cube of this side length
+network.r = 9;                     % Radius of communication and range
+network.varRangesProportion = 10;  % Variance of range measurements
+````
+
+If one desires to specify a network, it can be done by inputing its nodes coordinates to *setNetworkCoordinates* and choosing anchor node labels in *setNetworkAnchors* as follows:
+````matlab
+%% Choosing a specific network (if desired)
+setNetworkCoordinates = [1 5 1;2 5 9;5 3 6;8 2 9;3 7 9;
+                         5 7 4;9 2 4;8 1 5;7 6 3;8 3 1;
+                         9 2 6;3 8 5;7 7 2;1 4 2];
+setNetworkAnchors = [1;4;6;12];
+````
+
+The following code will run the specified network, if one desires to run a completly random network just uncomment and comment the specific lines calling **initNetwork()** with 2 or 4 arguments.
+````matlab
+%% Init network
+% Completely random network
+% [node,network] = initNetwork(node,network);
+% Specific network
+[node,network] = initNetwork(node,network,setNetworkCoordinates,...
+                             setNetworkAnchors);
+````
+
+Another important parameter for the convergence of the method must be set on **computeLocationStep.m**, it is the value of the stepsize utilized on the distributed gradient method. We utilize a fixed and small value as a standard, but we show other possibilities on the commented section of this same file.
+````matlab
+% For now, we are using fixed step sizes
+    etas = 1e-3;
+````
+
+The result of running the specified network with the parameters given before is shown in the following plots:
 
 ## Credits
 This implementation was coded by myself, Pedro Paulo Ventura Tecchio, while pursuing a Ph.D. degree at University of Pennsylvania. Related paper:
