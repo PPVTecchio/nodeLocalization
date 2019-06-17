@@ -57,9 +57,9 @@ Another important parameter for the convergence of the method must be set on **c
 
 The result of running the specified network with the parameters given before is shown in the following plots, which are generated automatically by the functions **showNetwork()** and **showPlots()**:
 
-![Example network specified in the file.](/network_14nodes_example_case_5e4iterations.png)
-![Difference norm between ground truth and estimation over iterations.](/difference_14nodes_example_case_5e4iterations.png)
-![Trajectories of the estimated values at node 1.](/trajectories_14nodes_example_case_5e4iterations.png)
+![Example network specified in the file.](figures/network_14nodes_example_case_5e4iterations.png)
+![Difference norm between ground truth and estimation over iterations.](figures/difference_14nodes_example_case_5e4iterations.png)
+![Trajectories of the estimated values at node 1.](figures/trajectories_14nodes_example_case_5e4iterations.png)
 
 We utilized a structure to contain all variables and estimated values for each node in the network as follows:
 ````matlab
@@ -119,7 +119,7 @@ nNetworkSamples = 20;
 ````
 The output of this function is a plot with all RMSE values over iterations with different colors for each network. An example of running 28 networks is given below:
 
-![RMSE simulation of 28 random networks](/first_RMSE_simulated_run_with_28_random_networks_and_same_parameters.png)
+![RMSE simulation of 28 random networks](figures/first_RMSE_simulated_run_with_28_random_networks_and_same_parameters.png)
 
 ## Credits
 This implementation was coded by myself, Pedro Paulo Ventura Tecchio, while pursuing a Ph.D. degree at University of Pennsylvania. Related paper:
