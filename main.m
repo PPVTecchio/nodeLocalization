@@ -10,6 +10,8 @@ close all  % I like to close and clean everything before starting.
 clear all
 clc
 
+addpath('./source/')
+
 %% Properties to set network
 rng(69)    % Random generator seed number. Changes networks without 
            % changing its parameters bellow.
